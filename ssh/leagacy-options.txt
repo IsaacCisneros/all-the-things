@@ -1,0 +1,9 @@
+Issue:
+    Unable to negotiate with legacyhost: no matching key exchange method found.
+    Their offer: diffie-hellman-group1-sha1
+Cause:
+    In this case, the client and server were unable to agree on the key exchange algorithm.
+    The server offered only a single method diffie-hellman-group1-sha1.
+    OpenSSH supports this method, but does not enable it by default because it is weak and within theoretical range of the so-called Logjam attack.
+Solution:
+    ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost
